@@ -2,13 +2,24 @@
 
 require_relative 'spec_helper'
 
+
 describe service('redis6379-single') do
   it { should be_enabled }
 end
 
-describe service('redis6379-single') do
-  it { should be_running }
+case os[:family]
+when "Ubuntu"
+  describe process('redis-server') do
+    # must use process here as serverspec expects init scripts to return stdout
+    # "running" and falls back to a bad 'ps aux'
+    it { should be_running }
+  end
+else
+  describe service('redis6379-single') do
+    it { should be_running }
+  end
 end
+
 
 describe port(6379) do
   it { should be_listening }

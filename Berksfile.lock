@@ -1,0 +1,19 @@
+DEPENDENCIES
+  redis-multi
+    path: .
+    metadata: true
+  redisio
+    path: ../redisio
+
+GRAPH
+  apt (2.4.0)
+  build-essential (2.0.4)
+  chef-sugar (2.0.0)
+  redis-multi (0.0.1)
+    apt (>= 0.0.0)
+    chef-sugar (>= 0.0.0)
+    redisio (~> 2.1)
+  redisio (2.1.1)
+    build-essential (>= 0.0.0)
+    ulimit (>= 0.1.2)
+  ulimit (0.3.2)

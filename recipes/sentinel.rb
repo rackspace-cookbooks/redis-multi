@@ -18,7 +18,7 @@ sentinel_port = node['redis-multi']['sentinel_port']
 
 # configure master w/ slaveof, based on found master
 node.set['redisio']['sentinels'] = []
-node.set['redisio']['sentinels'] << { 'name' => "#{bind_port}-sentinel",
+node.set['redisio']['sentinels'] << { 'name' => "#{sentinel_port}-sentinel",
                                       'sentinel_port' => sentinel_port,
                                       'master_ip' => master_ip,
                                       'master_port' => bind_port }

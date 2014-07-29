@@ -6,7 +6,7 @@
     "hostname": "vagrant.vm",
     "os": "centos",
     "recipes": [
-      "redis-multi::redis_slave"
+      "redis-multi::slave"
     ],
     "roles": [
       "redis_slave"

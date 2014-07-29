@@ -33,13 +33,13 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[redis-multi::redis_single]
+      - recipe[redis-multi::single]
   - name: master
     run_list:
-      - recipe[redis-multi::redis_master]
+      - recipe[redis-multi::master]
   - name: slave
     run_list:
-      - recipe[redis-multi::redis_slave]
+      - recipe[redis-multi::slave]
   - name: sentinel
     run_list:
-      - recipe[redis-multi::redis_sentinel]
+      - recipe[redis-multi::sentinel]

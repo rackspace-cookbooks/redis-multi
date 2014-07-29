@@ -12,9 +12,9 @@ the creation of master/slave and sentinel systems.
 
 The cookbook utilizes three recipes depending on the server's role.
 
-`redis_master.rb` : sets up a redis server and init script with master in name
+`master.rb` : sets up a redis server and init script with master in name
 
-`redis_slave.rb` : sets up a slave redis server pointing to the master node
+`slave.rb` : sets up a slave redis server pointing to the master node
 definded within attributes.
 
 Search will look for the node in the same environment with the tag
@@ -22,13 +22,13 @@ Search will look for the node in the same environment with the tag
 use search, create the master node first before bootstrapping, and set the
 attribute `['redis-multi']['master']` with the correct IP.
 
-`redis_slave.rb` : sets up a slave redis server pointing to the master node
+`slave.rb` : sets up a slave redis server pointing to the master node
 definded within attributes.
 
 Search will be used in the same fashion as the `redis_slave.rb` recipe above (
   they share the `_find_master.rb` functionality.)
 
-Note that `_find_all.rb` is included here as a recipe. This is done in case a
+Note that `find_all.rb` is included here as a recipe. This is done in case a
 wrapper cookbook wants to find all redis nodes for iptables or some other
 purpose.
 
@@ -44,6 +44,8 @@ addresses that is populated through search and a `redis_slave` tag.
 
 `default['redis-multi']['bind_port'] = 6379` Used for the port for masters,
 slaves, and sentinels. Right now, this must be the same everywhere. To override ports, and make them different on different nodes, you will have to use upstream directly.
+
+`default['redis-multi']['sentinel_port'] = 46379` Used to specify an alternate default port for sentinel instances.
 
 License & Authors
 -----------------

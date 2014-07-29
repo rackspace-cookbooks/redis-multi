@@ -1,18 +1,16 @@
-mysql-multi Cookbook CHANGELOG
+redis-multi Cookbook CHANGELOG
 ==============================
-This file is used to list changes made in each version of the mysql-multi
+This file is used to list changes made in each version of the redis-multi
 cookbook.
 
-v1.2.2 (2014-07-15)
+v0.1.0 (2014-07-29)
 -------------------
-- Fix attribute typo (#10)
+- Remove redis_ from recipe names (cleaner to see, e.g. redis-multi::foo)
+- Fix some rubocop and foodcritic complaints
+- _find_all.rb becomes public, renamed to find_all.rb
+- Added default attribute for sentinel port number
+- Ensure chef-solo usage doesn't fatal out
 
-v1.2.1 (2014-07-11)
+v0.0.1 (2014-07-28)
 -------------------
-- Create a proper array so we don't run into nil issues (#8)
-- Fix bug preventing mulitiple slaves (#9)
-
-v1.2.0 (2014-07-08)
--------------------
-- Add search functionality
-- Add 100% coverage in ChefSpec
+- Initial import.

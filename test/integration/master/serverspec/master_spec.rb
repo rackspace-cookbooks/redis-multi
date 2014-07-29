@@ -7,7 +7,7 @@ describe service('redis6379-master') do
 end
 
 case os[:family]
-when "Ubuntu"
+when 'Ubuntu'
   describe process('redis-server') do
     # must use process here as serverspec expects init scripts to return stdout
     # "running" and falls back to a bad 'ps aux'

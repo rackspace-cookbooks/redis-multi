@@ -34,12 +34,21 @@ suites:
   - name: default
     run_list:
       - recipe[redis-multi::single]
+      - recipe[redis-multi]
+      - recipe[redis-multi::enable]
+
   - name: master
     run_list:
       - recipe[redis-multi::master]
+      - recipe[redis-multi]
+      - recipe[redis-multi::enable]
   - name: slave
     run_list:
       - recipe[redis-multi::slave]
+      - recipe[redis-multi]
+      - recipe[redis-multi::enable]
   - name: sentinel
     run_list:
       - recipe[redis-multi::sentinel]
+      - recipe[redis-multi::sentinel_default]
+      - recipe[redis-multi::sentinel_enable]

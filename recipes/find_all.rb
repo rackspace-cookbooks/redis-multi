@@ -8,7 +8,7 @@
 #
 
 # include in any recipe meant to be called externally
-include_recipe 'redis-multi'
+include_recipe 'redis-multi::_base'
 
 if Chef::Config[:solo]
   errmsg = 'This recipe uses search if all attribute is not set. \

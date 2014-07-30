@@ -8,7 +8,7 @@
 #
 
 # include in any recipe meant to be called externally
-include_recipe 'redis-multi'
+include_recipe 'redis-multi::_base'
 
 # find master so we can configure slaves
 include_recipe 'redis-multi::_find_master'
@@ -16,18 +16,19 @@ master_ip = node['redis-multi']['redis_master']
 
 # configure master w/ slaveof, based on found master
 bind_port = node['redis-multi']['bind_port']
-master_data = { 'name' => "#{bind_port}-slave",
-                'port' => bind_port,
-                'slaveof' => { 'address' => master_ip,
-                               'port' => bind_port
-                             }
-              }
 
-node.set['redisio']['servers'] = []
-node.set['redisio']['servers'] << master_data
+# if downstream doesn't supply, do a nice default
+if node.deep_fetch('redisio','servers').nil?
+  master_data = { 'name' => "#{bind_port}-slave",
+                  'port' => bind_port,
+                  'slaveof' => { 'address' => master_ip,
+                                 'port' => bind_port
+                               }
+                }
 
-include_recipe 'redisio'
-include_recipe 'redisio::enable'
+  node.set['redisio']['servers'] = []
+  node.set['redisio']['servers'] << master_data
+end
 
 tag('redis_slave')
 tag('redis')

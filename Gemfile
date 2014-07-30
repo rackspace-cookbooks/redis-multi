@@ -11,6 +11,9 @@ group :unit do
   gem 'berkshelf', '>= 3.0'
   gem 'chefspec'
   gem 'chef-sugar'
+  # hardcode the version for now until 404s are resolved:
+  # https://github.com/sethvargo/chefspec/issues/472
+  gem 'chef-zero', '= 2.0.2'
 end
 
 group :kitchen_common do

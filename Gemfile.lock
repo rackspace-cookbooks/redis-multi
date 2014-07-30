@@ -52,7 +52,7 @@ GEM
       rest-client (>= 1.0.4, < 1.7.0)
       yajl-ruby (~> 1.1)
     chef-sugar (2.1.0)
-    chef-zero (2.2)
+    chef-zero (2.0.2)
       hashie (~> 2.0)
       json
       mixlib-log (~> 1.3)
@@ -252,6 +252,7 @@ PLATFORMS
 DEPENDENCIES
   berkshelf (>= 3.0)
   chef-sugar
+  chef-zero (= 2.0.2)
   chefspec
   fauxhai
   foodcritic

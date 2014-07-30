@@ -11,7 +11,7 @@
 include_recipe 'redis-multi::_base'
 
 # if downstream doesn't supply, do a nice default
-if node.deep_fetch('redisio','servers').nil?
+if node.deep_fetch('redisio', 'servers').nil?
   bind_port = node['redis-multi']['bind_port']
   node.set['redisio']['servers'] = []
   node.set['redisio']['servers'] << { 'name' => "#{bind_port}-single",

@@ -18,7 +18,7 @@ master_ip = node['redis-multi']['redis_master']
 bind_port = node['redis-multi']['bind_port']
 
 # if downstream doesn't supply, do a nice default
-if node.deep_fetch('redisio','servers').nil?
+if node.deep_fetch('redisio', 'servers').nil?
   master_data = { 'name' => "#{bind_port}-slave",
                   'port' => bind_port,
                   'slaveof' => { 'address' => master_ip,

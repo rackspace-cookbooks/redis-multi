@@ -22,6 +22,6 @@ node.set['redisio']['sentinels'] << { 'name' => "#{sentinel_port}-sentinel",
                                       'sentinel_port' => sentinel_port,
                                       'master_ip' => master_ip,
                                       'master_port' => bind_port }
-                                      
+
 tag('redis_sentinel')
 tag('redis')

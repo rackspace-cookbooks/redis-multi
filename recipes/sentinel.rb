@@ -8,7 +8,7 @@
 #
 
 # include in any recipe meant to be called externally
-include_recipe 'redis-multi'
+include_recipe 'redis-multi::_base'
 
 # find master so we can configure sentinel
 include_recipe 'redis-multi::_find_master'
@@ -22,9 +22,6 @@ node.set['redisio']['sentinels'] << { 'name' => "#{sentinel_port}-sentinel",
                                       'sentinel_port' => sentinel_port,
                                       'master_ip' => master_ip,
                                       'master_port' => bind_port }
-
-include_recipe 'redisio::sentinel'
-include_recipe 'redisio::sentinel_enable'
-
+                                      
 tag('redis_sentinel')
 tag('redis')

@@ -8,16 +8,15 @@
 #
 
 # include in any recipe meant to be called externally
-include_recipe 'redis-multi'
+include_recipe 'redis-multi::_base'
 
-bind_port = node['redis-multi']['bind_port']
-node.set['redisio']['servers'] = []
-node.set['redisio']['servers'] << { 'name' => "#{bind_port}-single",
-                                    'port' => bind_port }
-
-# this recipe is for a standalone redis, with all defaults
-include_recipe 'redisio'
-include_recipe 'redisio::enable'
+# if downstream doesn't supply, do a nice default
+if node.deep_fetch('redisio','servers').nil?
+  bind_port = node['redis-multi']['bind_port']
+  node.set['redisio']['servers'] = []
+  node.set['redisio']['servers'] << { 'name' => "#{bind_port}-single",
+                                      'port' => bind_port }
+end
 
 tag('redis_single')
 tag('redis')

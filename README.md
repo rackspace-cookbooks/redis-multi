@@ -12,6 +12,10 @@ the creation of master/slave and sentinel systems.
 
 The cookbook utilizes three recipes depending on the server's role.
 
+`default.rb` : calls upstream rediosio::default
+
+`enable.rb` : calls upstream redisio::enable
+
 `master.rb` : sets up a redis server and init script with master in name
 
 `slave.rb` : sets up a slave redis server pointing to the master node
@@ -42,10 +46,17 @@ tag.
 `default['redis-multi']['slaves'] = %w()` Used to hold a list of slave IP
 addresses that is populated through search and a `redis_slave` tag.
 
-`default['redis-multi']['bind_port'] = 6379` Used for the port for masters,
-slaves, and sentinels. Right now, this must be the same everywhere. To override ports, and make them different on different nodes, you will have to use upstream directly.
+** Note that the two settings below only apply if you don't define your own
+`node[redisio]` instances of redis (if you call the recipe without doing that,
+these ports will be used as the defaults for new instances)
 
-`default['redis-multi']['sentinel_port'] = 46379` Used to specify an alternate default port for sentinel instances.
+`default['redis-multi']['bind_port'] = 6379` Used for the port for masters,
+slaves, and sentinels. Right now, this must be the same everywhere. To override
+ports, and make them different on different nodes, you will have to use upstream
+directly.
+
+`default['redis-multi']['sentinel_port'] = 46379` Used to specify an alternate
+default port for sentinel instances.
 
 License & Authors
 -----------------

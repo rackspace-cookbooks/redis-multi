@@ -17,6 +17,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# include in any recipe meant to be called externally
+include_recipe 'redis-multi::_base'
+
 if Chef::Config[:solo]
   errmsg = 'This recipe uses search if master attribute is not set. \
    Chef Solo does not support search.'

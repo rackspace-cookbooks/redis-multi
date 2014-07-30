@@ -2,7 +2,7 @@
 source "https://rubygems.org"
 
 group :lint do
-  gem 'foodcritic-rackspace-rules', :git => 'git@github.com:AutomationSupport/foodcritic-rackspace-rules.git'
+  gem 'foodcritic-rackspace-rules'
   gem 'foodcritic'
   gem 'rubocop'
 end

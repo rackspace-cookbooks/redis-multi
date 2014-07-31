@@ -19,7 +19,7 @@ else
   end
 end
 
-describe port(46379) do
+describe port(46_379) do
   it { should be_listening }
 end
 

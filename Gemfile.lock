@@ -1,9 +1,3 @@
-GIT
-  remote: git@github.com:AutomationSupport/foodcritic-rackspace-rules.git
-  revision: 8d072dad08e883cc730ee9a31c39bdcb0e8a7522
-  specs:
-    foodcritic-rackspace-rules (1.0.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -26,7 +20,7 @@ GEM
       thor (~> 0.18)
     berkshelf-api-client (1.2.0)
       faraday (~> 0.9.0)
-    buff-config (1.0.0)
+    buff-config (1.0.1)
       buff-extensions (~> 1.0)
       varia_model (~> 0.4)
     buff-extensions (1.0.0)
@@ -34,13 +28,13 @@ GEM
     buff-ruby_engine (0.1.0)
     buff-shell_out (0.1.1)
       buff-ruby_engine (~> 0.1.0)
-    celluloid (0.16.0.pre2)
-      timers (~> 3.0.0)
+    celluloid (0.16.0.pre3)
+      timers (~> 4.0.0)
     celluloid-io (0.16.0.pre2)
       celluloid (>= 0.16.0.pre)
       nio4r (>= 1.0.0)
-    chef (11.12.8)
-      chef-zero (>= 2.0.2, < 2.1)
+    chef (11.12.2)
+      chef-zero (~> 2.0, >= 2.0.2)
       diff-lcs (~> 1.2, >= 1.2.4)
       erubis (~> 2.7)
       highline (~> 1.6, >= 1.6.9)
@@ -53,11 +47,11 @@ GEM
       mixlib-shellout (~> 1.4)
       net-ssh (~> 2.6)
       net-ssh-multi (~> 1.1)
-      ohai (~> 7.0.4)
+      ohai (~> 7.0)
       pry (~> 0.9)
       rest-client (>= 1.0.4, < 1.7.0)
       yajl-ruby (~> 1.1)
-    chef-sugar (2.0.0)
+    chef-sugar (2.1.0)
     chef-zero (2.0.2)
       hashie (~> 2.0)
       json
@@ -80,6 +74,9 @@ GEM
       net-ssh
       ohai
     ffi (1.9.3)
+    ffi-yajl (1.0.1)
+      ffi (~> 1.5)
+      libyajl2 (~> 1.0)
     foodcritic (4.0.0)
       erubis
       gherkin (~> 2.11)
@@ -88,6 +85,7 @@ GEM
       rufus-lru (~> 1.0)
       treetop (~> 1.4)
       yajl-ruby (~> 1.1)
+    foodcritic-rackspace-rules (1.0.2)
     formatador (0.2.5)
     gherkin (2.12.2)
       multi_json (~> 1.3)
@@ -104,7 +102,7 @@ GEM
     guard-kitchen (0.0.2)
       guard
       mixlib-shellout
-    guard-rspec (4.3.0)
+    guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     guard-rubocop (1.1.0)
@@ -117,6 +115,7 @@ GEM
     json (1.8.1)
     kitchen-vagrant (0.15.0)
       test-kitchen (~> 1.0)
+    libyajl2 (1.0.1)
     listen (2.7.9)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -148,26 +147,28 @@ GEM
       mini_portile (= 0.6.0)
     octokit (3.2.0)
       sawyer (~> 0.5.3)
-    ohai (7.0.4)
+    ohai (7.2.0)
+      ffi (~> 1.9)
+      ffi-yajl (~> 1.0)
       ipaddress
       mime-types (~> 1.16)
       mixlib-cli
       mixlib-config (~> 2.0)
       mixlib-log
       mixlib-shellout (~> 1.2)
-      systemu (~> 2.5.2)
-      yajl-ruby
+      systemu (~> 2.6.4)
+      wmi-lite (~> 1.0)
     parser (2.2.0.pre.3)
       ast (>= 1.1, < 3.0)
       slop (~> 3.4, >= 3.4.5)
     polyglot (0.3.5)
     powerpack (0.0.9)
-    pry (0.9.12.6)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
+    pry (0.10.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-nav (0.2.3)
-      pry (~> 0.9.10)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
     rack (1.5.2)
     rainbow (2.0.0)
     rake (10.3.2)
@@ -226,7 +227,7 @@ GEM
     solve (1.2.1)
       dep_selector (~> 1.0)
       semverse (~> 1.1)
-    systemu (2.5.2)
+    systemu (2.6.4)
     test-kitchen (1.2.1)
       mixlib-shellout (~> 1.2)
       net-scp (~> 1.1)
@@ -234,7 +235,7 @@ GEM
       safe_yaml (~> 1.0)
       thor (~> 0.18)
     thor (0.19.1)
-    timers (3.0.1)
+    timers (4.0.0)
       hitimes
     treetop (1.5.3)
       polyglot (~> 0.3)
@@ -242,6 +243,7 @@ GEM
     varia_model (0.4.0)
       buff-extensions (~> 1.0)
       hashie (>= 2.0.2, < 3.0.0)
+    wmi-lite (1.0.0)
     yajl-ruby (1.2.1)
 
 PLATFORMS
@@ -250,10 +252,11 @@ PLATFORMS
 DEPENDENCIES
   berkshelf (>= 3.0)
   chef-sugar
+  chef-zero (= 2.0.2)
   chefspec
   fauxhai
   foodcritic
-  foodcritic-rackspace-rules!
+  foodcritic-rackspace-rules
   growl
   guard
   guard-foodcritic

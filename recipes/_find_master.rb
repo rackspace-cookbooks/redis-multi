@@ -24,7 +24,7 @@ include_recipe 'redis-multi::_base'
 if Chef::Config[:solo]
   errmsg = 'This recipe uses search if master attribute is not set. \
    Chef Solo does not support search.'
-  Chef::Application.warn(errmsg)
+  Chef::Log.warn(errmsg)
 elsif node.deep_fetch('redis-multi', 'redis_master').nil?
   master = search('node', 'tags:redis_master'\
                   " AND chef_environment:#{node.chef_environment}")

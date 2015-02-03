@@ -13,7 +13,7 @@ include_recipe 'redis-multi::_base'
 if Chef::Config[:solo]
   errmsg = 'This recipe uses search if all attribute is not set. \
     Chef Solo does not support search.'
-  Chef::Application.warn(errmsg)
+  Chef::Log.warn(errmsg)
 else # don't reuse old attribute 'all', freshen it
   all_ips = []
   found_nodes = search('node', 'tags:redis'\
@@ -26,7 +26,7 @@ else # don't reuse old attribute 'all', freshen it
     node.set['redis-multi']['all'] = all_ips
   else
     errmsg = 'Did not find Redis nodes to use, but none were set'
-    Chef::Application.warn(errmsg)
+    Chef::Log.warn(errmsg)
     # don't fail hard
   end
 end
